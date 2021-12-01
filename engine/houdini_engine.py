@@ -15,12 +15,12 @@ class Houdini_Engine(object):
     def open_file(self, path):
         hou.hipFile.load(path)
 
-    def save_file(self, Name, type):
-        file_path = Name + "." + type
+    def save_file(self, name, type):
+        file_path = name + "." + type
         hou.hipFile.save(file_path)
 
-    def activate_function(self, Name, Path):
-        if 'Merge' in Name:
+    def activate_function(self, name, Path):
+        if 'Merge' in name:
             self.merge_file(Path)
 
     def merge_file(self, path):

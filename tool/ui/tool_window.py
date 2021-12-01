@@ -43,17 +43,17 @@ class ToolWindow(QtWidgets.QMainWindow):
 
         self.lay.addStretch(1)
 
-    def assign_function(self, button_Name):
-        if 'Open' in button_Name:
+    def assign_function(self, button_name):
+        if 'Open' in button_name:
             return self.open_file
-        elif 'Save' in button_Name:
+        elif 'Save' in button_name:
             return self.save_file
         else:
             return self.custom_function
 
     def update_list(self):
         for f in self.engine.get_files():
-            addListWidgetItem(self.list_lw, f, os.path.basename(f))
+            add_list_widget_item(self.list_lw, f, os.path.basename(f))
 
     def open_file(self):
         item = self.list_lw.currentItem()
@@ -68,17 +68,17 @@ class ToolWindow(QtWidgets.QMainWindow):
     def custom_function(self):
         item = self.list_lw.currentItem()
         path = item.data(UserRole)
-        clicked_Button = self.sender()
-        Name = clicked_Button.text()
-        self.engine.activate_function(Name,path)
+        clicked_button = self.sender()
+        name = clicked_button.text()
+        self.engine.activate_function(name,path)
 
 
-def addListWidgetItem(listWidget, data, label):
+def add_list_widget_item(list_widget, data, label):
     """ Used to fill a UI listWidget with listWidgetItem (label + data) """
     item = QtWidgets.QListWidgetItem()
     item.setData(UserRole, data)
     item.setText(label)
-    listWidget.addItem(item)
+    list_widget.addItem(item)
     return item
 
 

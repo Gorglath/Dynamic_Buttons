@@ -13,11 +13,11 @@ class Maya_Engine(object):
 
     implements = ['Open', 'Save', 'Reference']
 
-    def open_file(self, Path):
-        cmds.file(Path, o=True)
+    def open_file(self, path):
+        cmds.file(path, o=True)
 
-    def save_file(self, Name, type):
-        cmds.file(rename=Name)
+    def save_file(self, name, type):
+        cmds.file(rename=name)
         if "ma" in type:
             file_format = "mayaAscii"
         else:
@@ -25,12 +25,12 @@ class Maya_Engine(object):
 
         cmds.file(save=True, type=file_format)
 
-    def activate_function(self, Name, Path):
-        if "Reference" in Name:
-            self.reference_file(Path)
+    def activate_function(self, name, path):
+        if "Reference" in name:
+            self.reference_file(path)
 
-    def reference_file(self,Path):
-        cmds.file(Path, reference=True)
+    def reference_file(self, path):
+        cmds.file(path, reference=True)
 
     def get_files(self):
         return datas.get_files(hard_coded_path, file_Ending)
