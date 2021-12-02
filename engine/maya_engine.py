@@ -11,7 +11,7 @@ hard_coded_path = 'C:/Users/User/Desktop/SchoolFiles/Pipeline/MOVIE/ASSETS/CAR'
 
 class Maya_Engine(object):
 
-    implements = ['Open', 'Save', 'Reference']
+    implements = ['Open', 'Save', 'Reference', 'Facecount', 'Trianglecount', 'Vertexcount']
 
     def open_file(self, path):
         cmds.file(path, o=True)
@@ -28,7 +28,25 @@ class Maya_Engine(object):
     def activate_function(self, name, path):
         if "Reference" in name:
             self.reference_file(path)
+        elif "Facecount" in name:
+            self.get_facecount()
+        elif "Trianglecount" in name:
+            self.get_trianglecount()
+        elif "Vertexcount" in name:
+            self.get_vertexcount()
 
+    def get_facecount(self):
+        cmds.select( all=True )
+        print(cmds.polyEvaluate(f=True))
+
+    def get_trianglecount(self):
+        cmds.select(all=True)
+        print(cmds.polyEvaluate(t=True))
+
+    def get_vertexcount(self):
+        cmds.select(all=True)
+        print(cmds.polyEvaluate(v=True))
+        
     def reference_file(self, path):
         cmds.file(path, reference=True)
 
