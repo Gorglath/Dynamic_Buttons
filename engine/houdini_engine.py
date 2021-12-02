@@ -1,7 +1,7 @@
 from tool import datas
 import hou
 
-file_Ending = ["hipnc"]
+file_Ending = ["hip", "hiplc", "hipnc"]
 
 file_types = ["hip", "hiplc", "hipnc"]
 
